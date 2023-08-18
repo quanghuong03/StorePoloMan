@@ -127,6 +127,32 @@ public class GioHangController {
         return "redirect:/gio-hang/cart";
     }
 
+
+    @GetMapping("/checkout")
+    public String checkout(Model model, HttpSession session, HttpServletRequest request) {
+        KhachHang khachHang = (KhachHang) session.getAttribute("khachHang");
+        if (khachHang == null) {
+            session.setAttribute("redirectUrl", request.getRequestURI());
+            return "redirect:/login";
+        }
+        GioHang gioHang = gioHangService.findByKhachHang(khachHang.getMaKhachHang());
+        if (gioHang == null) {
+            gioHang = new GioHang();
+            gioHang.setNgayTao(new java.sql.Date(new Date().getTime()));
+            gioHang.setTrangThai(0);
+            gioHang.setKhachHang(khachHang);
+            gioHangService.save(gioHang);
+        }
+        List<GioHangChiTiet> gioHangChiTiets = gioHangChiTietService.findByGioHang(gioHang.getMaGioHang());
+        double tongGia = gettongGia(gioHangChiTiets);
+        double donGia = getdonGia(gioHangChiTiets);
+        model.addAttribute("donGia", donGia);
+        model.addAttribute("tongGia", tongGia);
+        model.addAttribute("giohangct", gioHangChiTiets);
+        return "thanhtoan";
+
+    }
+
     @GetMapping("/dat-hang")
     public String datHang(Model model, HttpSession session) {
         KhachHang khachHang = (KhachHang) session.getAttribute("khachHang");

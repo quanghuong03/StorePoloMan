@@ -65,43 +65,21 @@
                     <div class="billing-details">
                         <p>Already a customer ? <a href="#">Login</a></p>
                         <div class="section-title">
-                            <h3 class="title">Billing Details</h3>
+                            <h3 class="title">Thông tin khách hàng</h3>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="first-name" placeholder="First Name">
+                            <input class="input" type="text" name="first-name" placeholder="First Name" value="${khachHang.tenKhachHang}">
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="last-name" placeholder="Last Name">
+                            <input class="input" type="email" name="email" placeholder="Email"  value="${khachHang.email}">
                         </div>
                         <div class="form-group">
-                            <input class="input" type="email" name="email" placeholder="Email">
+                            <input class="input" type="text" name="address" placeholder="Address" value="${khachHang.diaChi}">
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="address" placeholder="Address">
+                            <input class="input" type="tel" name="tel" placeholder="Telephone" value="${khachHang.soDienThoai}">
                         </div>
-                        <div class="form-group">
-                            <input class="input" type="text" name="city" placeholder="City">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" name="country" placeholder="Country">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="tel" name="tel" placeholder="Telephone">
-                        </div>
-                        <div class="form-group">
-                            <div class="input-checkbox">
-                                <input type="checkbox" id="register">
-                                <label class="font-weak" for="register">Create Account?</label>
-                                <div class="caption">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-                                    <p>
-                                        <input class="input" type="password" name="password" placeholder="Enter Your Password">
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
@@ -176,48 +154,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="thumb"><img src="${pageContext.servletContext.contextPath}/img/thumb-product01.jpg" alt=""></td>
-                                <td class="details">
-                                    <a href="#">Product Name Goes Here</a>
-                                    <ul>
-                                        <li><span>Size: XL</span></li>
-                                        <li><span>Color: Camelot</span></li>
-                                    </ul>
-                                </td>
-                                <td class="price text-center"><strong>$32.50</strong><br><del class="font-weak"><small>$40.00</small></del></td>
-                                <td class="qty text-center"><input class="input" type="number" value="1"></td>
-                                <td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-                                <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td class="thumb"><img src="${pageContext.servletContext.contextPath}/img/thumb-product01.jpg" alt=""></td>
-                                <td class="details">
-                                    <a href="#">Product Name Goes Here</a>
-                                    <ul>
-                                        <li><span>Size: XL</span></li>
-                                        <li><span>Color: Camelot</span></li>
-                                    </ul>
-                                </td>
-                                <td class="price text-center"><strong>$32.50</strong></td>
-                                <td class="qty text-center"><input class="input" type="number" value="1"></td>
-                                <td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-                                <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td class="thumb"><img src="${pageContext.servletContext.contextPath}/img/thumb-product01.jpg" alt=""></td>
-                                <td class="details">
-                                    <a href="#">Product Name Goes Here</a>
-                                    <ul>
-                                        <li><span>Size: XL</span></li>
-                                        <li><span>Color: Camelot</span></li>
-                                    </ul>
-                                </td>
-                                <td class="price text-center"><strong>$32.50</strong></td>
-                                <td class="qty text-center"><input class="input" type="number" value="1"></td>
-                                <td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-                                <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-                            </tr>
+                            <c:forEach items="${giohangct}" var="giohang">
+                                <tr>
+                                    <td class="thumb"><img src="${pageContext.servletContext.contextPath}/img/sanpham/${giohang.ctsp.sp.hinhAnh}" alt=""></td>
+                                    <td class="details">
+                                        <a href="#">${giohang.ctsp.sp.tenSanPham}</a>
+                                        <ul>
+                                            <li><span>Size: ${giohang.ctsp.sz.soSize}</span></li>
+                                            <li><span>Color: ${giohang.ctsp.mauSac.tenMauSac}</span></li>
+                                        </ul>
+                                    </td>
+                                    <td class="price text-center"><strong>${giohang.ctsp.sp.giaBan}</strong><br><del class="font-weak"><small>$40.00</small></del></td>
+                                    <td class="qty text-center"><input class="input" type="number" value="${giohang.soLuong}"></td>
+                                    <td class="total text-center"><strong class="primary-color">${donGia}</strong></td>
+                                    <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                             <tfoot>
                             <tr>
@@ -238,7 +190,7 @@
                             </tfoot>
                         </table>
                         <div class="pull-right">
-                            <button class="primary-btn">Place Order</button>
+                            <a href="/gio-hang/dat-hang" class="primary-btn">Thanh toán</a>
                         </div>
                     </div>
 

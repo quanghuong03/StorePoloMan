@@ -185,7 +185,7 @@
                                     </div>
                                     <div class="shopping-cart-btns">
                                         <a href="${pageContext.servletContext.contextPath}/gio-hang/cart" class="main-btn">Xem giỏ hàng</a>
-                                        <a href="${pageContext.servletContext.contextPath}/checkout" class="primary-btn">Thanh toán <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="${pageContext.servletContext.contextPath}/gio-hang/checkout" class="primary-btn">Thanh toán <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
