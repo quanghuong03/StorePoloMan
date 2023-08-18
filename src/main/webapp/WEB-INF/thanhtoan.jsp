@@ -50,7 +50,7 @@
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="#">Home</a></li>
-            <li class="active">Checkout</li>
+            <li class="active">Cart</li>
         </ul>
     </div>
 </div>
@@ -176,28 +176,54 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${giohangct}" var="giohang">
                             <tr>
-                                <td class="thumb"><img src="${pageContext.servletContext.contextPath}/img/sanpham/${giohang.ctsp.sp.hinhAnh}" alt=""></td>
+                                <td class="thumb"><img src="${pageContext.servletContext.contextPath}/img/thumb-product01.jpg" alt=""></td>
                                 <td class="details">
-                                    <a href="#">${giohang.ctsp.sp.tenSanPham}</a>
+                                    <a href="#">Product Name Goes Here</a>
                                     <ul>
-                                        <li><span>Size: ${giohang.ctsp.sz.soSize}</span></li>
-                                        <li><span>Color: ${giohang.ctsp.mauSac.tenMauSac}</span></li>
+                                        <li><span>Size: XL</span></li>
+                                        <li><span>Color: Camelot</span></li>
                                     </ul>
                                 </td>
-                                <td class="price text-center"><strong>${giohang.ctsp.sp.giaBan}</strong><br><del class="font-weak"><small>$40.00</small></del></td>
-                                <td class="qty text-center"><input class="input" type="number" value="${giohang.soLuong}"></td>
-                                <td class="total text-center"><strong class="primary-color">${donGia}</strong></td>
+                                <td class="price text-center"><strong>$32.50</strong><br><del class="font-weak"><small>$40.00</small></del></td>
+                                <td class="qty text-center"><input class="input" type="number" value="1"></td>
+                                <td class="total text-center"><strong class="primary-color">$32.50</strong></td>
                                 <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
                             </tr>
-                            </c:forEach>
+                            <tr>
+                                <td class="thumb"><img src="${pageContext.servletContext.contextPath}/img/thumb-product01.jpg" alt=""></td>
+                                <td class="details">
+                                    <a href="#">Product Name Goes Here</a>
+                                    <ul>
+                                        <li><span>Size: XL</span></li>
+                                        <li><span>Color: Camelot</span></li>
+                                    </ul>
+                                </td>
+                                <td class="price text-center"><strong>$32.50</strong></td>
+                                <td class="qty text-center"><input class="input" type="number" value="1"></td>
+                                <td class="total text-center"><strong class="primary-color">$32.50</strong></td>
+                                <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="thumb"><img src="${pageContext.servletContext.contextPath}/img/thumb-product01.jpg" alt=""></td>
+                                <td class="details">
+                                    <a href="#">Product Name Goes Here</a>
+                                    <ul>
+                                        <li><span>Size: XL</span></li>
+                                        <li><span>Color: Camelot</span></li>
+                                    </ul>
+                                </td>
+                                <td class="price text-center"><strong>$32.50</strong></td>
+                                <td class="qty text-center"><input class="input" type="number" value="1"></td>
+                                <td class="total text-center"><strong class="primary-color">$32.50</strong></td>
+                                <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
+                            </tr>
                             </tbody>
                             <tfoot>
                             <tr>
                                 <th class="empty" colspan="3"></th>
                                 <th>SUBTOTAL</th>
-                                <th colspan="2" class="sub-total">${tongGia}</th>
+                                <th colspan="2" class="sub-total">$97.50</th>
                             </tr>
                             <tr>
                                 <th class="empty" colspan="3"></th>
@@ -207,12 +233,12 @@
                             <tr>
                                 <th class="empty" colspan="3"></th>
                                 <th>TOTAL</th>
-                                <th colspan="2" class="total">${tongGia}</th>
+                                <th colspan="2" class="total">$97.50</th>
                             </tr>
                             </tfoot>
                         </table>
                         <div class="pull-right">
-                            <a href="/gio-hang/dat-hang" class="primary-btn">Thanh toán</a>
+                            <button class="primary-btn">Place Order</button>
                         </div>
                     </div>
 
@@ -228,11 +254,11 @@
 <jsp:include page="trang_chu/footer.jsp"/>
 
 <!-- jQuery Plugins -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/jquery.zoom.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/slick.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/nouislider.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/jquery.zoom.min.js"></script>
 <script src="${pageContext.servletContext.contextPath}/js/main.js"></script>
 
 </body>

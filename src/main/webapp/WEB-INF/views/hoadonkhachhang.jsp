@@ -1,43 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>E-SHOP HTML Template</title>
 
-    <title>SB Admin 2 - Dashboard</title>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
-    <!-- Custom fonts for this template-->
-    <link href="${pageContext.servletContext.contextPath}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-          type="text/css">
-    <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css"/>
 
-    <!-- Custom styles for this template-->
-    <link href="${pageContext.servletContext.contextPath}/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="${pageContext.servletContext.contextPath}/vendor/datatables/dataTables.bootstrap4.min.css"
-          rel="stylesheet">
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/style.css"/>
+</head>
 
 </head>
 
-<body id="page-top">
-<jsp:include page="header.jsp"/>
+<body>
+<jsp:include page="trang_chu/header.jsp"/>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Danh Sách Hóa Đơn</h1>
+    <h1 class="h3 mb-2 text-gray-800">Đơn mua</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -50,7 +58,6 @@
                     <thead>
                     <tr>
                         <th>Mã Hoá Đơn</th>
-                        <th>Tên người đặt</th>
                         <th>Ngày tạo</th>
                         <th>Tình trạng</th>
                         <th>Action</th>
@@ -59,7 +66,6 @@
                     <tfoot>
                     <tr>
                         <th>Mã Hoá Đơn</th>
-                        <th>Khách hàng</th>
                         <th>Gía trị đơn</th>
                         <th>Tình trạng</th>
                         <th></th>
@@ -77,7 +83,7 @@
                             <td>${hoaDon.ngayTao}</td>
                             <td>
                                 <c:if test="${hoaDon.trangThai == 0}">
-                                    <a href="/admin/xac-nhan/${hoaDon.maHoaDon}" class="btn btn-primary">Xác nhận</a>
+                                    <a href="" class="btn btn-primary">Đang chờ xác nhận</a>
                                     <button class="btn btn-danger">Hủy đơn</button>
                                 </c:if>
                                 <c:if test="${hoaDon.trangThai == 1}">
@@ -101,29 +107,15 @@
 
 </div>
 <!-- End of Main Content -->
-<jsp:include page="footer.jsp"/>
+<jsp:include page="trang_chu/footer.jsp"/>
+<!-- Js Plugins -->
 
-<!-- Bootstrap core JavaScript-->
-<script src="${pageContext.servletContext.contextPath}/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.servletContext.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="${pageContext.servletContext.contextPath}/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="${pageContext.servletContext.contextPath}/js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="${pageContext.servletContext.contextPath}/vendor/chart.js/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="${pageContext.servletContext.contextPath}/js/demo/chart-area-demo.js"></script>
-<script src="${pageContext.servletContext.contextPath}/js/demo/chart-pie-demo.js"></script>
-<script src="${pageContext.servletContext.contextPath}/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="${pageContext.servletContext.contextPath}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="${pageContext.servletContext.contextPath}/js/demo/datatables-demo.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/nouislider.min.js"></script>
+<script src="js/jquery.zoom.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/main.js"></script>
 </body>
 
 </html>

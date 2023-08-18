@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -22,8 +21,7 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css"/>
 
     <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/slick.css"/>
-    <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/slick-theme.css"/>
+
 
     <!-- nouislider -->
     <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/nouislider.min.css"/>
@@ -100,7 +98,7 @@
                         <select class="input search-categories">
                             <option value="0">All Categories</option>
                             <option value="1">Category 01</option>
-                            <option value="1">Category 02</option>
+                            <option value="1">Category 02   </option>
                         </select>
                         <button class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
@@ -125,10 +123,10 @@
                             </c:if>
                         </div>
                         <c:if test="${empty khachHang}">
-                            <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+                            <a href="/login" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
                         </c:if>
                         <c:if test="${not empty khachHang}">
-                            <a href="#" class="text-uppercase">Logout</a>
+                            <a href="/logout" class="text-uppercase">Logout</a>
                         </c:if>
                         <ul class="custom-menu">
                             <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
@@ -186,7 +184,7 @@
                                         </c:choose>
                                     </div>
                                     <div class="shopping-cart-btns">
-                                        <a href="${pageContext.servletContext.contextPath}/cart" class="main-btn">Xem giỏ hàng</a>
+                                        <a href="${pageContext.servletContext.contextPath}/gio-hang/cart" class="main-btn">Xem giỏ hàng</a>
                                         <a href="${pageContext.servletContext.contextPath}/checkout" class="primary-btn">Thanh toán <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>

@@ -36,6 +36,10 @@ public class TrangChuController {
     GioHangChiTietService gioHangChiTietService;
     @Autowired
     GioHangService gioHangService;
+    @Autowired
+    HoaDonService hoaDonService;
+    @Autowired
+    HoaDonChiTietService hoaDonChiTietService;
 
     @GetMapping("/")
     public String hienthi(Model model,
@@ -47,16 +51,20 @@ public class TrangChuController {
             SanPham sanPham = sanPhams.get(0);
             List<MauSac> mauSacs = chiTietSanPhamServicel.findMauSacBymaSanPham(sanPham.getMaSanPham());
             List<Size> sizes = chiTietSanPhamServicel.findSizeBymaSanPham(sanPham.getMaSanPham());
-            List<ChiTietSanPham> chiTietSanPhams = chiTietSanPhamServicel.getChiTietSanPhamByMaSanPhamAndMaSize(sanPham.getMaSanPham(), sizes.get(0).getMaSize());
-            ChiTietSanPham firstChiTiet = chiTietSanPhams.get(0);
-            model.addAttribute("sanPham", sanPham);
-            model.addAttribute("mauSacs", mauSacs);
-            model.addAttribute("sizes", sizes);
-            model.addAttribute("chiTietSanPhams", chiTietSanPhams);
-            model.addAttribute("selectedMaSanPham", sanPham.getMaSanPham());
-            model.addAttribute("selectedMaMau", mauSacs.get(0).getMaMauSac());
-            model.addAttribute("selectedMaSize", sizes.get(0).getMaSize());
-            model.addAttribute("selectedChiTiet", firstChiTiet);
+            if (!sizes.isEmpty()) {
+                List<ChiTietSanPham> chiTietSanPhams = chiTietSanPhamServicel.getChiTietSanPhamByMaSanPhamAndMaSize(sanPham.getMaSanPham(), sizes.get(0).getMaSize());
+                if (!chiTietSanPhams.isEmpty()) {
+                    ChiTietSanPham firstChiTiet = chiTietSanPhams.get(0);
+                    model.addAttribute("sanPham", sanPham);
+                    model.addAttribute("mauSacs", mauSacs);
+                    model.addAttribute("sizes", sizes);
+                    model.addAttribute("chiTietSanPhams", chiTietSanPhams);
+                    model.addAttribute("selectedMaSanPham", sanPham.getMaSanPham());
+                    model.addAttribute("selectedMaMau", mauSacs.get(0).getMaMauSac());
+                    model.addAttribute("selectedMaSize", sizes.get(0).getMaSize());
+                    model.addAttribute("selectedChiTiet", firstChiTiet);
+                }
+            }
         }
         return "index";
     }
@@ -126,7 +134,6 @@ public class TrangChuController {
         return "detailSanPham";
     }
 
-
     @ModelAttribute("giohangct")
     public List<GioHangChiTiet> cart(HttpSession session) {
         KhachHang khachHang = (KhachHang) session.getAttribute("khachHang");
@@ -143,6 +150,28 @@ public class TrangChuController {
         }
 
         return gioHangChiTietService.findByGioHang(gioHang.getMaGioHang());
+    }
+
+    @GetMapping("/hoa-don")
+    public String hoaDon(Model model, HttpSession session, HttpServletRequest request) {
+        KhachHang khachHang = (KhachHang) session.getAttribute("khachHang");
+        if (khachHang == null) {
+            session.setAttribute("redirectUrl", request.getRequestURI());
+            return "redirect:/login";
+        }
+        List<HoaDon> hoaDons = hoaDonService.findByKhachHang(khachHang.getMaKhachHang());
+        HoaDon hoaDon;
+        if (hoaDons.isEmpty()) {
+            hoaDon = new HoaDon();
+            hoaDon.setNgayTao(new java.sql.Date(new Date().getTime()));
+            hoaDon.setTrangThai(0);
+            hoaDon.setKhachHang(khachHang);
+            hoaDonService.save(hoaDon);
+        } else {
+            hoaDon = hoaDons.get(0);
+        }
+        model.addAttribute("hoaDon", hoaDons);
+        return "hoadonkhachhang";
     }
 
 }

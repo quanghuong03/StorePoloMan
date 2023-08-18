@@ -18,4 +18,5 @@ public class ChatLieu {
   @Column(name = "TenChatLieu")
   private String tenChatLieu;
 
+
 }

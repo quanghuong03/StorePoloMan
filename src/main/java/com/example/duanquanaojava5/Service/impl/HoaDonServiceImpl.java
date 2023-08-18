@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,5 +27,10 @@ public class HoaDonServiceImpl implements HoaDonService {
     @Override
     public void save(HoaDon hoaDon) {
         hoaDonRepository.save(hoaDon);
+    }
+
+    @Override
+    public List<HoaDon> findByKhachHang(Integer maKhachHang) {
+        return hoaDonRepository.findByKhachHangMaKhachHang(maKhachHang);
     }
 }

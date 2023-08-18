@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.http.HttpRequest;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -150,7 +151,10 @@ public class GioHangController {
             gioHangChiTietService.delete(gioHangChiTiet);
             System.out.println("THÊM GIỎ HÀNG THÀNH CÔNG");
         }
-        return "redirect:/admin/hoa-don";
+        return "redirect:/hoa-don";
     }
+
+
+
 
 }
