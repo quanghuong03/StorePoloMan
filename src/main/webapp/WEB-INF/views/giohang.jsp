@@ -101,7 +101,7 @@
                             </tfoot>
                         </table>
                         <div class="pull-right">
-                            <a href="/gio-hang/dat-hang" class="primary-btn">Thanh toán</a>
+                            <a href="/gio-hang/checkout" class="primary-btn">Thanh toán</a>
                         </div>
                     </div>
 

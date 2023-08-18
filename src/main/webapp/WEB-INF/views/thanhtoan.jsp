@@ -190,7 +190,8 @@
                             </tfoot>
                         </table>
                         <div class="pull-right">
-                            <a href="/gio-hang/dat-hang" class="primary-btn">Thanh toán</a>
+                            <a href="/gio-hang/dat-hang" class="primary-btn">Thanh toán khi nhận hàng</a>
+                            <a href="/gio-hang/dat-hang" class="primary-btn">Thanh toán VNPay</a>
                         </div>
                     </div>
 
